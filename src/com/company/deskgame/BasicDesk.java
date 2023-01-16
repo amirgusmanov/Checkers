@@ -6,6 +6,7 @@ import com.company.coordinate.BoardCoordinate;
 import com.company.coordinate.Vertical;
 import com.company.exceptions.ImpossibleMoveException;
 import com.company.move.Move;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -22,8 +23,8 @@ public class BasicDesk extends Desk {
     @Override
     public void handle(Move m) {
 
-        for(Checker checker : getCheckerList()){
-            if(canBeEaten(checker) && checker.isWhite() != isWhiteMove()){
+        for (Checker checker : getCheckerList()) {
+            if (canBeEaten(checker) && checker.isWhite() != isWhiteMove()) {
                 Checker c = findCheckerOrNull(m.getStart());
                 eatingSpreeChecker = c;
                 handleEating(m);
@@ -40,7 +41,7 @@ public class BasicDesk extends Desk {
         if (checker.isWhite() && checker.getCoordinate().getVertical().equals(Vertical.VIII)) {
             turningIntoAWhiteQueen(checker);
         }
-        if(!checker.isWhite() && checker.getCoordinate().getVertical().equals(Vertical.I)) {
+        if (!checker.isWhite() && checker.getCoordinate().getVertical().equals(Vertical.I)) {
             turningIntoABlackQueen(checker);
         }
 
@@ -55,18 +56,18 @@ public class BasicDesk extends Desk {
 
     }
 
-    private boolean canBeEaten(Checker checker){
+    private boolean canBeEaten(Checker checker) {
 
-        if(!getCheckerList().contains(checker)){
+        if (!getCheckerList().contains(checker)) {
             throw new RuntimeException(String.format("Checker {%s} is not on the desk", checker));
         }
         return canBeEatenSimple(checker) || canBeEatenQueen(checker);
 
     }
 
-    private boolean canBeEatenSimple(Checker checker){
+    private boolean canBeEatenSimple(Checker checker) {
 
-        if(!getCheckerList().contains(checker)){
+        if (!getCheckerList().contains(checker)) {
             throw new RuntimeException(String.format("Checker {%s} is not on the desk", checker));
         }
 
@@ -91,7 +92,7 @@ public class BasicDesk extends Desk {
             List<BoardCoordinate> diagonals = enemy.getCoordinate().diagonals();
             List<BoardCoordinate> intersections = new ArrayList<>();
             for (BoardCoordinate dp : diagonals) {
-                for (BoardCoordinate ap: coordinates) {
+                for (BoardCoordinate ap : coordinates) {
                     if (dp.equals(ap))
                         intersections.add(dp);
                 }
@@ -103,7 +104,7 @@ public class BasicDesk extends Desk {
 
     }
 
-    private boolean canBeEatenQueen(Checker checker){
+    private boolean canBeEatenQueen(Checker checker) {
 
         if (!getCheckerList().contains(checker)) {
             throw new RuntimeException(String.format("Checker {%s} is not in the game", checker));
@@ -119,51 +120,51 @@ public class BasicDesk extends Desk {
 
         List<BoardCoordinate> adjacentCoordinates = checker.getCoordinate().adjacentCoordinates();
 
-        for(Checker queen : enemyQueens){
+        for (Checker queen : enemyQueens) {
             List<BoardCoordinate> diagonals = queen.getCoordinate().diagonals();
             List<BoardCoordinate> intersections = new ArrayList<>();
-            for(BoardCoordinate diagonalCoordinate : diagonals){
-                for(BoardCoordinate adjacentCoordinate: adjacentCoordinates){
-                    if(diagonalCoordinate.equals(adjacentCoordinate)){
+            for (BoardCoordinate diagonalCoordinate : diagonals) {
+                for (BoardCoordinate adjacentCoordinate : adjacentCoordinates) {
+                    if (diagonalCoordinate.equals(adjacentCoordinate)) {
                         intersections.add(adjacentCoordinate);
                     }
                 }
             }
-            if(intersections.isEmpty()){
+            if (intersections.isEmpty()) {
                 return true;
             }
         }
         return false;
     }
 
-    private void handleEating(Move m){
-        if(eatingSpreeChecker != null){
-            if(!findChecker(m.getStart()).equals(eatingSpreeChecker)){
+    private void handleEating(Move m) {
+        if (eatingSpreeChecker != null) {
+            if (!findChecker(m.getStart()).equals(eatingSpreeChecker)) {
                 throw new ImpossibleMoveException(findChecker(m.getTarget()), m.getTarget());
             }
-            if(findChecker(m.getStart()).equals(eatingSpreeChecker)){
+            if (findChecker(m.getStart()).equals(eatingSpreeChecker)) {
                 getCheckerList().remove(findChecker(m.getTarget()));
             }
         }
     }
 
-    private void handleSimpleMove(Move m){
-        if(eatingSpreeChecker != null){
-            if(!findChecker((m.getStart())).equals(eatingSpreeChecker)){
+    private void handleSimpleMove(Move m) {
+        if (eatingSpreeChecker != null) {
+            if (!findChecker((m.getStart())).equals(eatingSpreeChecker)) {
                 throw new ImpossibleMoveException(findChecker(m.getTarget()), m.getTarget());
             }
-            if(findChecker(m.getStart()).equals(eatingSpreeChecker)){
+            if (findChecker(m.getStart()).equals(eatingSpreeChecker)) {
                 //TODO: ...
                 findChecker(m.getTarget()).getCoordinate().getVertical().next();
             }
         }
     }
 
-    public void turningIntoAWhiteQueen(Checker checker){
+    public void turningIntoAWhiteQueen(Checker checker) {
         getCheckerList().set(getCheckerList().indexOf(checker), new QueenChecker(true, checker.getCoordinate()));
     }
 
-    public void turningIntoABlackQueen(Checker checker){
+    public void turningIntoABlackQueen(Checker checker) {
         getCheckerList().set(getCheckerList().indexOf(checker), new QueenChecker(false, checker.getCoordinate()));
     }
 

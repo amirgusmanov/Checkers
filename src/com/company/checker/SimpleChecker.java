@@ -7,16 +7,18 @@ import java.util.List;
 
 /**
  * Default simple checker
+ *
  * @author Amir Gusmanov
  */
-public class SimpleChecker extends Checker{
+public class SimpleChecker extends Checker {
 
-    public SimpleChecker(BoardCoordinate coordinate, boolean isWhite){
+    public SimpleChecker(BoardCoordinate coordinate, boolean isWhite) {
         super(isWhite, coordinate);
     }
 
     /**
      * Method which defines how can checker move
+     *
      * @param finish - end coordinate
      * @return
      */
@@ -30,10 +32,9 @@ public class SimpleChecker extends Checker{
         if (Math.abs(deltaVertical) != ACCEPTABLE_ABSOLUTE_DELTA_VERTICAL) {
             return false;
         }
-        if(isWhite()) {
+        if (isWhite()) {
             return deltaHorizontal == ACCEPTABLE_ABSOLUTE_DELTA_HORIZONTAL_WHITE;
-        }
-        else {
+        } else {
             return deltaHorizontal == ACCEPTABLE_ABSOLUTE_DELTA_HORIZONTAL_BLACK;
         }
 

@@ -3,7 +3,7 @@ package com.company.exceptions;
 import com.company.checker.Checker;
 import com.company.coordinate.BoardCoordinate;
 
-public class ImpossibleMoveException extends RuntimeException{
+public class ImpossibleMoveException extends RuntimeException {
 
     //должен выйти exception в случае совершения невозможного хода
     private Checker piece;
@@ -15,7 +15,7 @@ public class ImpossibleMoveException extends RuntimeException{
         this.targetCoordinate = targetCoordinate;
     }
 
-    public ImpossibleMoveException(Checker piece, BoardCoordinate targetCoordinate, Throwable cause){
+    public ImpossibleMoveException(Checker piece, BoardCoordinate targetCoordinate, Throwable cause) {
         super(String.format("Checker {%s} has moved to the impossible position {%s}, try again", piece, targetCoordinate), cause);
         this.piece = piece;
         this.targetCoordinate = targetCoordinate;

@@ -15,9 +15,13 @@ public enum Vertical implements BoardPosition {
 
     private final int index;
 
-    Vertical(int index) { this.index = index; }
+    Vertical(int index) {
+        this.index = index;
+    }
 
-    public int getIndex() { return index; }
+    public int getIndex() {
+        return index;
+    }
 
     @Override
     public BoardPosition next() {

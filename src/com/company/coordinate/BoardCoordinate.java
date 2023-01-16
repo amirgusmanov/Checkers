@@ -5,6 +5,7 @@ import java.util.Objects;
 
 /**
  * Abstract model of coordinate
+ *
  * @author Amir Gusmanov
  */
 public abstract class BoardCoordinate {
@@ -17,7 +18,9 @@ public abstract class BoardCoordinate {
         this.horizontal = horizontal;
     }
 
-    public Vertical getVertical() { return vertical; }
+    public Vertical getVertical() {
+        return vertical;
+    }
 
     public void setVertical(Vertical vertical) {
         this.vertical = vertical;

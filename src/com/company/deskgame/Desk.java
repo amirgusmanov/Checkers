@@ -16,23 +16,23 @@ public abstract class Desk {
 
     public abstract void handle(Move m);
 
-    public Desk(List<Checker> checkerList){
+    public Desk(List<Checker> checkerList) {
         this.checkerList = checkerList;
         isWhiteMove = true;
     }
 
-    public Checker findChecker(BoardCoordinate coordinate){
-        for(Checker checker : getCheckerList()){
-            if(checker.getCoordinate().equals(coordinate)){
+    public Checker findChecker(BoardCoordinate coordinate) {
+        for (Checker checker : getCheckerList()) {
+            if (checker.getCoordinate().equals(coordinate)) {
                 return checker;
             }
         }
         throw new CheckerNotFoundException(coordinate);
     }
 
-    public Checker findCheckerOrNull(BoardCoordinate coordinate){
-        for(Checker checker : getCheckerList()){
-            if(checker.getCoordinate().equals(coordinate)){
+    public Checker findCheckerOrNull(BoardCoordinate coordinate) {
+        for (Checker checker : getCheckerList()) {
+            if (checker.getCoordinate().equals(coordinate)) {
                 return checker;
             }
         }

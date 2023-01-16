@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * Parents class for simple and queen checker
+ *
  * @author Amir Gusmanov
  */
 public abstract class Checker {

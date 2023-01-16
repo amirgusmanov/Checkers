@@ -14,7 +14,9 @@ public class Move {
         this.target = target;
     }
 
-    public BoardCoordinate getStart() { return start; }
+    public BoardCoordinate getStart() {
+        return start;
+    }
 
     public void setStart(BoardCoordinate start) {
         this.start = start;

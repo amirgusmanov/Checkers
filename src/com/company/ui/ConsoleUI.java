@@ -7,6 +7,7 @@ import com.company.coordinate.Vertical;
 import com.company.deskgame.CheckerFiller;
 import com.company.deskgame.Desk;
 import com.company.move.Move;
+
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -26,8 +27,8 @@ public class ConsoleUI implements UserInterface {
     public void showDesk() {
         char white = '\u26C0';
         char black = '\u26C2';
-        for(CheckersDeskBoardCoordinate coordinates : checkerFiller.getCoordinateList()) {
-            if(coordinates.getHorizontal().getIndex() != 8) {
+        for (CheckersDeskBoardCoordinate coordinates : checkerFiller.getCoordinateList()) {
+            if (coordinates.getHorizontal().getIndex() != 8) {
                 if (game.findCheckerOrNull(coordinates) == null) {
                     System.out.print("|_");
                 } else if (game.findCheckerOrNull(coordinates).isWhite()) {
@@ -35,8 +36,7 @@ public class ConsoleUI implements UserInterface {
                 } else if (!game.findCheckerOrNull(coordinates).isWhite()) {
                     System.out.print("|" + black);
                 }
-            }
-            else if(coordinates.getHorizontal().getIndex() == 8){
+            } else if (coordinates.getHorizontal().getIndex() == 8) {
                 if (game.findCheckerOrNull(coordinates) == null) {
                     System.out.print("|_");
                 } else if (game.findCheckerOrNull(coordinates).isWhite()) {

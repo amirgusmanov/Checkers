@@ -19,11 +19,9 @@ public class CheckersDeskBoardCoordinate extends BoardCoordinate {
         if (this.getVertical().getIndex() != 0 && this.getVertical().getIndex() != Vertical.values().length) {
             adjacentVerticals.add((Vertical) this.getVertical().next());
             adjacentVerticals.add((Vertical) this.getVertical().previous());
-        }
-        else if (this.getVertical().getIndex() == 0) {
+        } else if (this.getVertical().getIndex() == 0) {
             adjacentVerticals.add((Vertical) this.getVertical().next());
-        }
-        else if (this.getVertical().getIndex() == Vertical.values().length) {
+        } else if (this.getVertical().getIndex() == Vertical.values().length) {
             adjacentVerticals.add((Vertical) this.getVertical().previous());
         }
 
@@ -32,11 +30,9 @@ public class CheckersDeskBoardCoordinate extends BoardCoordinate {
         if (this.getHorizontal().getIndex() != 0 && this.getHorizontal().getIndex() != Horizontal.values().length) {
             adjacentHorizontals.add((Horizontal) this.getHorizontal().next());
             adjacentHorizontals.add((Horizontal) this.getHorizontal().previous());
-        }
-        else if (this.getVertical().getIndex() == 0) {
+        } else if (this.getVertical().getIndex() == 0) {
             adjacentHorizontals.add((Horizontal) this.getHorizontal().previous());
-        }
-        else if (this.getVertical().getIndex() == Horizontal.values().length) {
+        } else if (this.getVertical().getIndex() == Horizontal.values().length) {
             adjacentHorizontals.add((Horizontal) this.getVertical().next());
         }
 

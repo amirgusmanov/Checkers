@@ -2,24 +2,19 @@ package com.company.coordinate;
 
 import java.util.Arrays;
 
-public enum Horizontal implements BoardPosition{
+public enum Horizontal implements BoardPosition {
 
-    A(1),
-    B(2),
-    C(3),
-    D(4),
-    E(5),
-    F(6),
-    G(7),
-    H(8);
+    A(1), B(2), C(3), D(4), E(5), F(6), G(7), H(8);
 
     private final int index;
 
-    Horizontal(int index){
+    Horizontal(int index) {
         this.index = index;
     }
 
-    public int getIndex(){ return index; }
+    public int getIndex() {
+        return index;
+    }
 
     @Override
     public BoardPosition next() {
@@ -40,10 +35,7 @@ public enum Horizontal implements BoardPosition{
     }
 
     public static Horizontal findByIndex(int index) {
-        return Arrays.stream(values())
-                .filter(coordinate -> coordinate.index == index)
-                .findFirst()
-                .get();
+        return Arrays.stream(values()).filter(coordinate -> coordinate.index == index).findFirst().get();
     }
 
 }

@@ -2,11 +2,11 @@ package com.company.exceptions;
 
 import com.company.coordinate.BoardCoordinate;
 
-public class CheckerNotFoundException extends RuntimeException{
+public class CheckerNotFoundException extends RuntimeException {
 
     private BoardCoordinate coordinate;
 
-    public CheckerNotFoundException(Throwable cause, BoardCoordinate coordinate){
+    public CheckerNotFoundException(Throwable cause, BoardCoordinate coordinate) {
         super(cause);
         this.coordinate = coordinate;
     }
